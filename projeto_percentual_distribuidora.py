@@ -1,11 +1,26 @@
+"""
+Projeto Para a seleção de estágio da Target Sistemas
+Nome: Paulo Mauricio Pereira Patricio
+Estudante: Análise e Desenvolvimento de Sistemas
+
+Atualize o número da versão aqui
+Versão: 1.0.1
+
+Descrição da Versão:
+- Melhorada a legibilidade da saída com inclusão de "\n".
+- Adicionado "input()" para pausar a tela e permitir melhor leitura dos resultados.
+- Alteração nos parâmetros do construtor, para que não sombrêm as variáveis globais.
+"""
+
+
 class Distribuidora:
-    def __init__(self, faturamento_sp, faturamento_rj, faturamento_mg, faturamento_es, faturamento_outras_regioes):
+    def __init__(self, sp, rj, mg, es, outras_regioes):
         # Inicializamos os valores de faturamento por estado
-        self.faturamento_sp = faturamento_sp
-        self.faturamento_rj = faturamento_rj
-        self.faturamento_mg = faturamento_mg
-        self.faturamento_es = faturamento_es
-        self.faturamento_outras_regioes = faturamento_outras_regioes
+        self.faturamento_sp = sp
+        self.faturamento_rj = rj
+        self.faturamento_mg = mg
+        self.faturamento_es = es
+        self.faturamento_outras_regioes = outras_regioes
 
         # Inicializamos os atributos que serão calculados depois
         self.total = 0
@@ -33,15 +48,16 @@ class Distribuidora:
         return f"R$ {valor:,.2f}".replace(',', 'v').replace('.', ',').replace('v', '.')
 
     def exibir_percentuais(self):
+        print("*" * 3 + " Faturamento Total/Percentual de Filiais " + 3 * "*")
         # Exibe o faturamento total formatado
-        print(f"Faturamento total: {self.formatar_valor_br(self.total)}")
+        print(f"\nFaturamento total: -------------- {self.formatar_valor_br(self.total)}")
 
         # Exibe os percentuais calculados
-        print(f"Percentual de SP: {self.percentual_sp:.2f}%")
-        print(f"Percentual de RJ: {self.percentual_rj:.2f}%")
-        print(f"Percentual de MG: {self.percentual_mg:.2f}%")
-        print(f"Percentual de ES: {self.percentual_es:.2f}%")
-        print(f"Percentual de Outras Regiões: {self.percentual_outras_regioes:.2f}%")
+        print(f"\nPercentual de SP: ---------------------- {self.percentual_sp:.2f}%")
+        print(f"Percentual de RJ: ---------------------- {self.percentual_rj:.2f}%")
+        print(f"Percentual de MG: ---------------------- {self.percentual_mg:.2f}%")
+        print(f"Percentual de ES: ---------------------- {self.percentual_es:.2f}%")
+        print(f"Percentual de Outras Regiões: ---------- {self.percentual_outras_regioes:.2f}%")
 
 
 # Valores de faturamento fornecidos
@@ -60,3 +76,4 @@ distribuidora.calcular_percentuais()
 
 # Exibe os percentuais e o faturamento total formatado
 distribuidora.exibir_percentuais()
+input()
